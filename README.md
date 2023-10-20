@@ -33,3 +33,5 @@
 ## 说明
 
 百度网盘普通用户下载速度会比较慢，如果想要提高下载速度，请开通`SVIP`。
+
+> 扩展开发文档：[https://docs.gopeed.com/zh/dev-extension.html](https://docs.gopeed.com/zh/dev-extension.html)
