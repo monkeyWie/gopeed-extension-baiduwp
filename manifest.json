@@ -1,0 +1,40 @@
+{
+  "name": "gopeed-extension-baiduwp",
+  "author": "monkeyWie",
+  "title": "百度网盘下载",
+  "description": "支持下载百度云分享链接，SVIP可满速下载",
+  "icon": "icon.png",
+  "version": "1.0.0",
+  "homepage": "https://github.com/monkeyWie/gopeed-extension-baiduwp",
+  "repository": {
+    "url": "https://github.com/monkeyWie/gopeed-extension-baiduwp"
+  },
+  "scripts": [
+    {
+      "event": "onResolve",
+      "match": {
+        "urls": [
+          "*://pan.baidu.com/s/*"
+        ]
+      },
+      "entry": "dist/index.js"
+    },
+    {
+      "event": "onStart",
+      "match": {
+        "labels": [
+          "monkeyWie@gopeed-extension-baiduwp"
+        ]
+      },
+      "entry": "dist/index.js"
+    }
+  ],
+  "settings": [
+    {
+      "name": "bduss",
+      "title": "BDUSS",
+      "description": "百度网盘网站Cookie里的BDUSS值",
+      "type": "string"
+    }
+  ]
+}
