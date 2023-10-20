@@ -20,8 +20,8 @@
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "gopeed": "^1.2.1",
-    "@gopeed/types": "^1.2.1",
+    "gopeed": "^1.2.2",
+    "@gopeed/types": "^1.2.2",
     "prettier": "^3.0.3",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
