@@ -1,3 +1,5 @@
+import { deepFileList } from '../util.js';
+
 const API_URL = 'https://pan.baidu.com';
 
 class Client {
@@ -29,21 +31,7 @@ class Client {
    * 递归获取所有文件列表
    */
   async getFileList() {
-    const fileList = [];
-
-    const _this = this;
-    async function deepList(list) {
-      for (const file of list) {
-        if (file.isdir == 1) {
-          await deepList(await _this._doGetList(file.path));
-        } else {
-          fileList.push(file);
-        }
-      }
-    }
-
-    await deepList(await this._doGetList(''));
-    return fileList;
+    return await deepFileList(this._doGetList.bind(this), '');
   }
 
   /**
