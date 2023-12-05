@@ -17,6 +17,10 @@
     "prettier/prettier": "error"
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "gopeed": true
   }
 }

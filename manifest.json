@@ -4,7 +4,7 @@
   "title": "百度网盘下载",
   "description": "支持百度云下载，SVIP可满速下载",
   "icon": "icon.png",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "homepage": "https://github.com/monkeyWie/gopeed-extension-baiduwp",
   "repository": {
     "url": "https://github.com/monkeyWie/gopeed-extension-baiduwp"
@@ -15,7 +15,8 @@
       "match": {
         "urls": [
           "*://pan.baidu.com/s/*",
-          "*://pan.baidu.com/disk/main/*"
+          "*://pan.baidu.com/disk/main/*",
+          "*://pan.baidu.com/wap/home/*"
         ]
       },
       "entry": "dist/index.js"

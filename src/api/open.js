@@ -1,4 +1,3 @@
-import gopeed from 'gopeed';
 import { deepFileList } from '../util.js';
 
 const API_URL = 'https://pan.baidu.com/rest/2.0';
@@ -17,6 +16,8 @@ class Client {
   // 调用百度接口，并自动处理access_token过期问题
   async _doRequest(path, params) {
     // 重试3次
+    let result = null;
+    let lastError = null;
     for (let i = 0; i < 3; i++) {
       params.access_token = await this._refreshAccessToken(this.refreshToken);
       const paramsStr = Object.keys(params)
@@ -27,15 +28,22 @@ class Client {
       });
       const data = await res.json();
       if (data.errno != 0) {
+        lastError = new Error('接口调用失败，path=' + path + ', errno=' + data.errno);
         // access_token 过期处理，移除缓存
         if ([111, -6].includes(data.errno)) {
           gopeed.storage.remove(ACCESS_TOKEN_KEY);
           continue;
         }
-        throw new Error('接口调用失败，path=' + path + ', errno=' + data.errno);
+        throw lastError;
       }
-      return data;
+      lastError = null;
+      result = data;
+      break;
     }
+    if (lastError) {
+      throw lastError;
+    }
+    return result;
   }
 
   async getFileList(dir) {
