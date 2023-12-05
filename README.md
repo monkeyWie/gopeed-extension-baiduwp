@@ -14,11 +14,11 @@
 
 扩展支持两种方式下载百度网盘资源。
 
-### 1. 网盘首页地址
+### （一） 通过网盘首页地址下载
 
 此方式通过百度网盘开放平台接口实现，需要设置开放平台对应的参数，请参考以下步骤进行配置：
 
-### 1. 设置 refresh_token
+#### 1. 设置 refresh_token
 
 首先要获取对应的`refresh_token`，目前扩展默认设置了`alist`的百度网盘参数，只需要通过此[链接](https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=iYCeC9g08h5vuP9UqvPHKKSVrKFXGa1v&redirect_uri=https://alist.nn.ci/tool/baidu/callback&scope=basic,netdisk&qrcode=1)来获取你自己的`refresh_token`即可。
 
@@ -26,9 +26,9 @@
 
 接着把复制的`refresh_token`值填入`Gopeed`扩展的设置页面，点击保存即可。
 
-![](image/set-refresh-token.png)
+![](image/set-refresh-token.gif)
 
-### 2. 通过网盘首页地址下载
+#### 2. 通过网盘首页地址下载
 
 浏览器打开需要下载的百度网盘页面，然后复制浏览器地址栏中的`地址`。
 
@@ -36,11 +36,11 @@
 
 打开`Gopeed`任务页面，点击`新建任务`，创建即可解析下载。
 
-![](image/open-create.png)
+![](image/open-create.gif)
 
 > 注：此方式默认只解析`第一层文件夹里的文件`，这是为了防止文件过多导致解析失败，如果需要解析更多层级的文件夹，请自行在浏览器中进入到对应的文件夹，然后复制地址进行解析下载。
 
-### 2. 网盘分享链接
+### 2. （二） 通过网盘分享链接下载
 
 此方式需要配置百度网盘`Cookie`中的`BDUSS`值，请参考以下步骤进行配置：
 
@@ -62,10 +62,12 @@
 
 ![](image/share-create.gif)
 
-> 注：如果有提取码，需要把提取码一起带入到分享链接中，例如：`https://pan.baidu.com/s/1WsmMhDHLyt6e2-oPNv7TvQ?pwd=gty`
+> 注：如果有提取码，需要把提取码一起带入到分享链接中，例如：`https://pan.baidu.com/s/1WsmMhDHLyt6e2-oPNv7TvQ?pwd=gty8`
 
 ## 说明
 
 百度网盘现在对并发数有做限制，建议下载连接数使用`4`以防止不必要的失败请求，百度网盘普通用户下载速度会比较慢，如果想要提高下载速度，请开通`SVIP`。
 
-> 扩展开发文档：[https://docs.gopeed.com/zh/dev-extension.html](https://docs.gopeed.com/zh/dev-extension.html)
+## 参考
+
+扩展开发文档：[https://docs.gopeed.com/zh/dev-extension.html](https://docs.gopeed.com/zh/dev-extension.html)
