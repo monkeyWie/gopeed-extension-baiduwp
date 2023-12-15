@@ -132,9 +132,22 @@ async function resolveWithShare(ctx) {
 }
 
 gopeed.events.onStart(async (ctx) => {
-  // 判断是否需要解析直链
-  const req = ctx.task.meta.req;
-  if (!req.labels.gotDlink || ctx.task.status == 'error') {
+  await updateDlink(ctx.task);
+});
+
+gopeed.events.onError(async (ctx) => {
+  await updateDlink(ctx.task);
+  // 继续下载
+  ctx.task.continue();
+});
+
+/**
+ * 更新真实下载链接
+ * @param {import('gopeed').ExtensionTask} task
+ */
+async function updateDlink(task) {
+  const req = task.meta.req;
+  if (!req.labels.gotDlink || task.status == 'error') {
     const fid = req.labels.fid;
     var dlink = req.url;
     if (req.labels.notShare) {
@@ -155,4 +168,4 @@ gopeed.events.onStart(async (ctx) => {
     req.url = dlink;
     req.labels.gotDlink = '1';
   }
-});
+}
