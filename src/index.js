@@ -77,21 +77,10 @@ async function resolveWithOpen(ctx, dir) {
 async function resolveWithShare(ctx) {
   const u = new URL(ctx.req.url);
   const surl = u.pathname.split('/')[2];
-  const search = u.search;
+  const search = u.searchParams;
   let pwd = '';
-  if (search) {
-    const pwdList = search
-      .replace('?', '')
-      .split('&')
-      .filter((item) => {
-        const [key, value] = item.split('=');
-        if (key === 'pwd') {
-          return value;
-        }
-      });
-    if (pwdList.length > 0) {
-      pwd = pwdList[0];
-    }
+  if (search && search.get('pwd')) {
+    pwd = search.get('pwd');
   }
   if (!surl) {
     return;
