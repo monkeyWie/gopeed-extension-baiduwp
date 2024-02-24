@@ -51,6 +51,9 @@
 - 方法一：通过浏览器开发者工具，按`F12`打开开发者工具，切换到`Application(应用程序)`选项卡，找到`Cookies`，找到`https://pan.baidu.com`，找到`BDUSS`，复制`Value`的值即可。
   ![](image/get-bduss.png)
 - 方法二： [参考教程](http://pandownload.net/faq/cookie.html)
+- 安卓手机上获取BDUSS打开下面网站登录即可
+  <https://bduss.nest.moe/>
+- 
 
 接着把复制的`BDUSS`值填入`Gopeed`扩展的设置页面，点击保存即可。
 
