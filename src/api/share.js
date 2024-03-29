@@ -90,7 +90,9 @@ class Client {
     const resp = await fetch('https://pan.baidu.com/share/wxlist?channel=weixin&version=2.2.2&clienttype=25&web=1', {
       method: 'POST',
       headers: this.headers,
-      body: `dir=${dir}&num=1000&order=time&page=${page}&pwd=${this.pwd}&root=${root}&shorturl=${this.surl}`,
+      body: `dir=${encodeURIComponent(dir)}&num=1000&order=time&page=${page}&pwd=${this.pwd}&root=${root}&shorturl=${
+        this.surl
+      }`,
     });
     const result = await resp.json();
     if (result.errno != 0) {
