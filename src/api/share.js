@@ -85,15 +85,13 @@ class Client {
     gopeed.logger.debug('dlink:', dlink);
     const dlinkParts = dlink.split('?')[1];
 
-    const realDurlResp = await fetch(`http://pcs.baidu.com/rest/2.0/pcs/file?app_id=250528&method=locatedownload&check_blue=1&es=1&esl=1&ant=1&path=${path}&${dlinkParts}&ver=4.0&dtype=1&err_ver=1.0&ehps=1&eck=1&vip=2&open_pflag=0&wp_retry_num=2&dpkg=1&sd=0&clienttype=9&version=3.0.20.18&time=${timestamp}&rand=92f0d4559f696c68a0dc3f5c2d9b98e916d21752&devuid=BDIMXV2-O_5C2E29F6772E440AB445B1E38F6FF2BF-C_0-D_E823_8FA6_BF53_0001_001B_448B_4A23_0665.-M_581122B7C835-V_04B71596&channel=0&version_app=7.44.7.1`,
+    const realDurlResp = await fetch(`https://d.pcs.baidu.com/rest/2.0/pcs/file?app_id=250528&method=locatedownload&check_blue=1&es=1&esl=1&ant=1&path=${path}&${dlinkParts}&ver=4.0&dtype=1&err_ver=1.0&ehps=1&eck=1&vip=2&open_pflag=0&wp_retry_num=2&dpkg=1&sd=0&clienttype=9&version=3.0.20.18&time=${timestamp}&rand=92f0d4559f696c68a0dc3f5c2d9b98e916d21752&devuid=BDIMXV2-O_5C2E29F6772E440AB445B1E38F6FF2BF-C_0-D_E823_8FA6_BF53_0001_001B_448B_4A23_0665.-M_581122B7C835-V_04B71596&channel=0&version_app=7.44.7.1`,
       {
         method: 'GET',
         headers: {"User-Agent": "netdisk;11.4.51.4.19", "Cookie": this.headers.Cookie},
       }
     );
     const realDurlResult = await realDurlResp.json();
-    //gopeed.logger.info('fetch', `http://pcs.baidu.com/rest/2.0/pcs/file?app_id=250528&method=locatedownload&check_blue=1&es=1&esl=1&ant=1&path=${path}&${dlinkParts}&ver=4.0&dtype=1&err_ver=1.0&ehps=1&eck=1&vip=2&open_pflag=0&wp_retry_num=2&dpkg=1&sd=0&clienttype=9&version=3.0.20.18&time=${timestamp}&rand=92f0d4559f696c68a0dc3f5c2d9b98e916d21752&devuid=BDIMXV2-O_5C2E29F6772E440AB445B1E38F6FF2BF-C_0-D_E823_8FA6_BF53_0001_001B_448B_4A23_0665.-M_581122B7C835-V_04B71596&channel=0&version_app=7.44.7.1`);
-    //gopeed.logger.info('realDurlResult', JSON.stringify(realDurlResult));
 
     if (realDurlResult.urls == undefined || realDurlResult.urls.length < 1) {
       throw new Error('获取真实下载链接失败 urls.length < 1');
@@ -107,7 +105,8 @@ class Client {
       }
     }
     if (realDlink === '') {
-      throw new Error('获取真实下载链接失败 realDlink === ""');
+      //throw new Error('获取真实下载链接失败 realDlink === ""');
+      realDlink = realDurlResult.urls[0].url;
     }
     gopeed.logger.debug('realDlink:', realDlink);
     return realDlink;
