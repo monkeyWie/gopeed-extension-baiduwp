@@ -42,19 +42,11 @@
 
 ### 2. ~~（二） 通过网盘分享链接下载(此方法已失效)~~
 
-此方式需要配置百度网盘`Cookie`中的`BDUSS`值，请参考以下步骤进行配置：
+此方式需要配置百度网盘`Cookie`值，请参考以下步骤进行配置：
 
-#### 1. 设置 BDUSS
+#### 1. 设置 Cookie
 
-首先下载之前必须要设置百度网盘登录后的`BDUSS`，有两种方式可以获取到：
-
-- 方法一：通过浏览器开发者工具，按`F12`打开开发者工具，切换到`Application(应用程序)`选项卡，找到`Cookies`，找到`https://pan.baidu.com`，找到`BDUSS`，复制`Value`的值即可。
-  ![](image/get-bduss.png)
-- 方法二： [参考教程](http://pandownload.net/faq/cookie.html)
-
-接着把复制的`BDUSS`值填入`Gopeed`扩展的设置页面，点击保存即可。
-
-![](image/set-bduss.gif)
+首先下载之前必须要设置百度网盘登录后的完整`Cookie`
 
 #### 2. 通过分享链接下载
 

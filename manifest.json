@@ -4,7 +4,7 @@
   "title": "百度网盘下载",
   "description": "支持百度云下载，SVIP可满速下载",
   "icon": "icon.png",
-  "version": "1.3.2",
+  "version": "1.3.4",
   "homepage": "https://github.com/monkeyWie/gopeed-extension-baiduwp",
   "repository": {
     "url": "https://github.com/monkeyWie/gopeed-extension-baiduwp"
@@ -62,9 +62,9 @@
       "type": "string"
     },
     {
-      "name": "bduss",
-      "title": "BDUSS",
-      "description": "百度网盘网站Cookie里的BDUSS值，下载分享链接时必填",
+      "name": "bdcookie",
+      "title": "百度盘Cookie",
+      "description": "百度网盘网站的完整Cookie",
       "type": "string"
     }
   ]
