@@ -156,7 +156,7 @@ async function updateDlink(task) {
     gopeed.logger.info('dlink', dlink);
     req.url = dlink;
     req.extra = {
-      "header": {
+      header: {
         'User-Agent': 'netdisk;11.4.51.4.19',
       },
     };
