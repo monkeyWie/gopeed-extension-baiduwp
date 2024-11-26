@@ -86,7 +86,7 @@ async function resolveWithShare(ctx) {
     return;
   }
 
-  const shareClient = new ShareClient(surl, pwd, gopeed.settings.bduss);
+  const shareClient = new ShareClient(surl, pwd, gopeed.settings.bdcookie);
 
   const shareInfo = await shareClient.getShareInfo();
   const name = shareInfo.title.split('/').pop() + (shareInfo.list.length > 1 ? '等' : '');
@@ -149,7 +149,7 @@ async function updateDlink(task) {
     } else {
       const surl = req.labels.surl;
       const pwd = req.labels.pwd;
-      const shareClient = new ShareClient(surl, pwd, gopeed.settings.bduss);
+      const shareClient = new ShareClient(surl, pwd, gopeed.settings.bdcookie);
       dlink = await shareClient.getDlink(fid);
     }
 

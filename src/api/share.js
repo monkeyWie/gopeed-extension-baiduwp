@@ -3,12 +3,12 @@ import { deepFileList } from '../util.js';
 const API_URL = 'https://pan.baidu.com';
 
 class Client {
-  constructor(surl, pwd, bduss) {
+  constructor(surl, pwd, bdcookie) {
     this.surl = surl;
     this.pwd = pwd;
     this.headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
-      Cookie: bduss,
+      Cookie: bdcookie,
       Referer: 'https://pan.baidu.com/disk/main',
     };
   }

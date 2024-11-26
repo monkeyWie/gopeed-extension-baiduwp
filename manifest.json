@@ -62,7 +62,7 @@
       "type": "string"
     },
     {
-      "name": "bduss",
+      "name": "bdcookie",
       "title": "百度盘Cookie",
       "description": "百度网盘网站的完整Cookie",
       "type": "string"
