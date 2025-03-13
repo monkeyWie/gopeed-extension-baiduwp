@@ -1,8 +1,6 @@
 import { deepFileList } from '../util.js';
 
 const API_URL = 'https://pan.baidu.com/rest/2.0';
-const ACCESS_TOKEN_KEY = 'accessToken';
-
 class Client {
   constructor(clientId, clientSecret, refreshToken) {
     this.appId = clientId;
@@ -31,7 +29,7 @@ class Client {
         lastError = new Error('接口调用失败，path=' + path + ', errno=' + data.errno);
         // access_token 过期处理，移除缓存
         if ([111, -6].includes(data.errno)) {
-          gopeed.storage.remove(ACCESS_TOKEN_KEY);
+          gopeed.storage.remove(this.refreshToken);
           continue;
         }
         throw lastError;
@@ -83,14 +81,14 @@ class Client {
   }
 
   async _refreshAccessToken(refreshToken) {
-    var accessToken = gopeed.storage.get(ACCESS_TOKEN_KEY);
+    var accessToken = gopeed.storage.get(refreshToken);
     if (!accessToken) {
       const resp = await fetch(
         `https://openapi.baidu.com/oauth/2.0/token?grant_type=refresh_token&refresh_token=${refreshToken}&client_id=iYCeC9g08h5vuP9UqvPHKKSVrKFXGa1v&client_secret=jXiFMOPVPCWlO2M5CwWQzffpNPaGTRBG`
       );
       const data = await resp.json();
       accessToken = data.access_token;
-      gopeed.storage.set(ACCESS_TOKEN_KEY, accessToken);
+      gopeed.storage.set(refreshToken, accessToken);
     }
     return accessToken;
   }
