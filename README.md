@@ -20,11 +20,13 @@
 
 #### 1. 设置 refresh_token
 
-首先要获取对应的`refresh_token`，目前扩展默认设置了`alist`的百度网盘参数，只需要通过此[链接](https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=iYCeC9g08h5vuP9UqvPHKKSVrKFXGa1v&redirect_uri=https://alist.nn.ci/tool/baidu/callback&scope=basic,netdisk&qrcode=1)来获取你自己的`refresh_token`即可。
+首先要获取对应的`refresh_token`，目前扩展默认设置了`alist`的百度网盘参数，只需要通过此[链接](https://api.oplist.org)来获取你自己的`refresh_token`即可，注意选择`百度网盘 (OAuth2) 手动登录`然后点击`获取Token`按钮，之后根据指引输入百度网盘生成的授权码成即可获取。
 
 ![](image/get-refresh-token.png)
 
 接着把复制的`refresh_token`值填入`Gopeed`扩展的设置页面，点击保存即可。
+
+> 十分感谢 [openlist](https://github.com/OpenListTeam/OpenList) 开源社区提供的服务！
 
 ![](image/set-refresh-token.gif)
 

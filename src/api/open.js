@@ -3,8 +3,8 @@ import { deepFileList } from '../util.js';
 const API_URL = 'https://pan.baidu.com/rest/2.0';
 class Client {
   constructor(clientId, clientSecret, refreshToken) {
-    this.appId = clientId;
-    this.secret = clientSecret;
+    this.clientId = clientId;
+    this.clientSecret = clientSecret;
     this.refreshToken = refreshToken;
     this.headers = {
       'User-Agent': 'netdisk',
@@ -18,6 +18,7 @@ class Client {
     let lastError = null;
     for (let i = 0; i < 3; i++) {
       params.access_token = await this._refreshAccessToken(this.refreshToken);
+      gopeed.logger.debug('params.access_token', params.access_token);
       const paramsStr = Object.keys(params)
         .map((key) => `${key}=${params[key]}`)
         .join('&');
@@ -84,7 +85,7 @@ class Client {
     var accessToken = gopeed.storage.get(refreshToken);
     if (!accessToken) {
       const resp = await fetch(
-        `https://openapi.baidu.com/oauth/2.0/token?grant_type=refresh_token&refresh_token=${refreshToken}&client_id=iYCeC9g08h5vuP9UqvPHKKSVrKFXGa1v&client_secret=jXiFMOPVPCWlO2M5CwWQzffpNPaGTRBG`
+        `https://openapi.baidu.com/oauth/2.0/token?grant_type=refresh_token&refresh_token=${refreshToken}&client_id=${this.clientId}&client_secret=${this.clientSecret}`
       );
       const data = await resp.json();
       accessToken = data.access_token;
