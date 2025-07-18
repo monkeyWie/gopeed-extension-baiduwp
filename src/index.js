@@ -29,7 +29,8 @@ gopeed.events.onResolve(async (ctx) => {
     }
     await resolveWithOpen(ctx, dir);
   } else if (ctx.req.url.includes('pan.baidu.com/s/')) {
-    await resolveWithShare(ctx);
+    // await resolveWithShare(ctx);
+    throw new MessageError('由于百度网盘API限制，不再支持分享链接解析，请将文件保存到我的网盘后再下载');
   }
 });
 

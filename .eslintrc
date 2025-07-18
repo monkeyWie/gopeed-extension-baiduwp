@@ -21,6 +21,7 @@
     "node": true
   },
   "globals": {
-    "gopeed": true
+    "gopeed": true,
+    "MessageError": true
   }
 }
